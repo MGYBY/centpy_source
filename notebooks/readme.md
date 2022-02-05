@@ -7,6 +7,6 @@ TODOs:
 - [x] Use pypde.
 - [ ] Strang splitting.
 - [ ] Implicit Runge-Kutta for the source term.
-- [ ] Implicit Euler scheme for the source term.
-- [ ] Crank-Nicolson scheme for the source term.
+- [x] Implicit Euler scheme (backward) for the source term.
+- [x] Crank-Nicolson scheme for the source term.
 
