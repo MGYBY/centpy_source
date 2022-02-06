@@ -6,7 +6,7 @@ TODOs:
 
 - [x] Use pypde.
 - [ ] Strang splitting.
-- [ ] Implicit Runge-Kutta for the source term.
+- [x] Implicit Runge-Kutta for the source term: Pareschi & Russo's 2nd-order method, but the coefficients could be adjusted to Qin & Zhang.
 - [x] Implicit Euler scheme (backward) for the source term.
 - [x] Crank-Nicolson scheme for the source term.
 
