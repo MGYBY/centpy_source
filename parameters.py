@@ -16,6 +16,9 @@ class Pars1d:
     cfl: float = 0.9
     scheme: str = "sd3"  # can be fd2, sd2, or sd3
     source: str = "rk3"
+    iter_method: str = "hybr"
+    n_coeff: float = 1.0
+    strang_splitting: bool = False
 
 
 # 2d
