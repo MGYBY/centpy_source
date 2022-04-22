@@ -373,7 +373,7 @@ class Solver1dNM:
             if t_out == self.dt_out:
                 i += 1
                 self.u_n[i, :] = self.u
-                format_string_time = f"{t:.1f}"
+                format_string_time = f"{t:.3f}"
                 file_name = 'outXYZ_%s.txt' % format_string_time
                 with open(file_name, 'w') as f:
                     writer = csv.writer(f, delimiter='\t')
