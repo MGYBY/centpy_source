@@ -391,7 +391,8 @@ class Solver1dNM:
                 min_fr_h = 0.0
                 count = max_h_ind
                 while (count>0):
-                    if (self.u[count-1,0]>self.u[count,0] and self.u[count-2,0]>self.u[count-1,0]):
+                    # filter out numerical oscillations
+                    if (self.u[count-1,0]>self.u[count,0] and self.u[count-2,0]>self.u[count-1,0] and self.u[count-2,0]>2.25*self.u[count,0]):
                         min_fr_h = self.u[count,0]
                         break
                     count -= 1
