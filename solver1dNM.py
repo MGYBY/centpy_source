@@ -382,7 +382,7 @@ class Solver1dNM:
 
             it += 1
             # output max and min of FR every 20 steps
-            if it%20 == 1:
+            if it%60 == 1:
                 if np.max(self.u[:,0]) > 100:
                     print("\rInstability not tolerable. End running ... ...", end="")
                     sys.exit()
@@ -392,7 +392,9 @@ class Solver1dNM:
                 count = max_h_ind
                 while (count>0):
                     # filter out numerical oscillations
-                    if (self.u[count-1,0]>self.u[count,0] and self.u[count-2,0]>self.u[count-1,0] and self.u[count-2,0]>2.25*self.u[count,0]):
+                    if (self.u[count-1,0]>self.u[count,0] and self.u[count-2,0]>self.u[count-1,0] and 
+                    self.u[count+1,0]<self.u[count,0] and self.u[count+2,0]<self.u[count+1,0] and
+                    np.abs(self.u[count-1,0]-self.u[count,0])>2.0*np.abs(self.u[count,0]-self.u[count+1,0])):
                         min_fr_h = self.u[count,0]
                         break
                     count -= 1
