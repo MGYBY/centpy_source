@@ -377,7 +377,7 @@ class Solver1dNM:
                 file_name = 'outXYZ_%s.txt' % format_string_time
                 with open(file_name, 'w') as f:
                     writer = csv.writer(f, delimiter='\t')
-                    writer.writerows(zip( np.transpose(self.x), np.transpose(self.u[:, 0]), np.transpose(self.u[:, 1])/np.transpose(self.u[:, 0]), ((np.transpose(self.u[:, 0])**(self.n_coeff))*(np.transpose(self.u[:, 1])/np.transpose(self.u[:, 0])**(2.0-self.n_coeff)))))
+                    writer.writerows(zip( np.transpose(self.x), np.transpose(self.u[:, 0]), np.transpose(self.u[:, 1])/np.transpose(self.u[:, 0]), ((np.transpose(self.u[:, 0])**(self.n_coeff))*((np.transpose(self.u[:, 1])/np.transpose(self.u[:, 0]))**(2.0-self.n_coeff)))))
                 t_out = 0
 
             it += 1
