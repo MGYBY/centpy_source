@@ -377,7 +377,7 @@ class Solver1dNM:
                 file_name = 'outXYZ_%s.txt' % format_string_time
                 with open(file_name, 'w') as f:
                     writer = csv.writer(f, delimiter='\t')
-                    writer.writerows(zip( np.transpose(self.x), np.transpose(self.u[:, 0])))
+                    writer.writerows(zip( np.transpose(self.x), np.transpose(self.u[:, 0]), ((np.transpose(self.u[:, 0])**(self.n_coeff))*(np.transpose(self.u[:, 1]/np.transpose(self.u[:, 0])**(2.0-self.n_coeff)))) ))
                 t_out = 0
 
             it += 1
@@ -391,7 +391,7 @@ class Solver1dNM:
                 max_h_ind = np.argmax(self.u[:,0])
                 min_fr_h = 0.0
                 count = max_h_ind
-                max_u = self.u[count,1]
+                max_u = self.u[count,1]/self.u[count, 0]
                 max_re = (max_u**(2.0-self.n_coeff))*(max_h**(self.n_coeff))
                 while (count>0):
                     # filter out numerical oscillations
