@@ -19,7 +19,10 @@ class Pars1d:
     iter_method: str = "hybr"
     n_coeff: float = 1.0
     strang_splitting: bool = False
-
+    grav: float = 9.81
+    mun: float = 0.0
+    rho_mud: float = 0.0
+    slope: float = 0.0
 
 # 2d
 @dataclass
