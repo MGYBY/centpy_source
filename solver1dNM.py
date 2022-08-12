@@ -382,6 +382,7 @@ class Solver1dNM:
 
             it += 1
             # output max and min of FR every 20 steps
+            # outputseries: t-x-hMax-reMax-hMin
             if it%60 == 1:
                 if np.max(self.u[:,0]) > 100:
                     print("\rInstability not tolerable. End running ... ...", end="")
@@ -390,6 +391,8 @@ class Solver1dNM:
                 max_h_ind = np.argmax(self.u[:,0])
                 min_fr_h = 0.0
                 count = max_h_ind
+                max_u = self.u[count,1]
+                max_re = (max_u**(2.0-self.n_coeff))*(max_h**(self.n_coeff))
                 while (count>0):
                     # filter out numerical oscillations
                     if (self.u[count-1,0]>self.u[count,0] and self.u[count-2,0]>self.u[count-1,0] and 
@@ -399,7 +402,7 @@ class Solver1dNM:
                         break
                     count -= 1
                 f1 = open("maxminH.txt", "a+")
-                f1.write("%18.8e %18.8e %18.8e %18.8e \n" % (t, (self.dx*(max_h_ind-0.50)), max_h, min_fr_h))
+                f1.write("%18.8e %18.8e %18.8e %18.8e %18.8e \n" % (t, (self.dx*(max_h_ind-0.50)), max_h, max_re, min_fr_h))
 
     def set_dt(self):
         r_max = np.max(self.spectral_radius_x(self.u))
